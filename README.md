@@ -9,4 +9,4 @@ La tuile est la case comprenant un multiple de 2 et jusqu'à "l'infini".
 
 Le joueur peut choisir de déplacer les tuiles vers la droite/gauche/bas/haut en utilisant les flèches directionnelles.
 
-Pour d'augmenter le score, le joueur doit déplacer les tuiles afin de combiner les mêmes nombres.
+Pour augmenter le score, le joueur doit déplacer les tuiles afin de combiner les mêmes nombres.
