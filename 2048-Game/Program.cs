@@ -10,6 +10,7 @@ namespace _2048_Game
     {
         static void Main(string[] args)
         {
+            string grosChien = "Bobby";
         }
     }
 }
