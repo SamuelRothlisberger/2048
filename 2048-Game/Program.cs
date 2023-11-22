@@ -78,6 +78,8 @@ namespace _2048_Game
         // Fonction pour afficher la grille 4x4
         static void DisplayBoard(int[,] board)
         {
+            Console.Clear();
+
             for (int row = 0; row < 4; row++)
             {
                 for (int col = 0; col < 4; col++)
