@@ -49,7 +49,7 @@ namespace _2048_Game
                         break;
 
                     default:
-                        Console.WriteLine("Tu dois appuyer sur les flèces directionnelles");
+                        Console.WriteLine("Tu dois appuyer sur les flèches directionnelles");
                         break;
                 }
             }
