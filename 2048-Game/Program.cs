@@ -34,7 +34,7 @@ namespace _2048_Game
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        MoveRight(board);
+                        MoveLeft(board);
                         AddNewNumber(board);
                         break;
 
@@ -114,7 +114,31 @@ namespace _2048_Game
             }
         }
 
-        // Fonction pour ajouter un nouveau '2' dans le tableau
+        // Fonction pour déplacer les chiffres vers la gauche
+        static void MoveLeft(int[,] board)
+        {
+            for (int row = 0; row < 4; row++)
+            {
+                // Déplacer les chiffres vers la gauche
+                for (int col = 1; col < 4; col++)
+                {
+                    if (board[row, col] != 0)
+                    {
+                        int currentCol = col;
+
+                        // Déplacer le chiffre vers la gauche tant que possible
+                        while (currentCol - 1 >= 0 && board[row, currentCol - 1] == 0)
+                        {
+                            board[row, currentCol - 1] = board[row, currentCol];
+                            board[row, currentCol] = 0;
+                            currentCol--;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Fonction pour ajouter un nouveau '2' dans le tableau à chaque mouvement
         static void AddNewNumber(int[,] board)
         {
             Random random = new Random();
