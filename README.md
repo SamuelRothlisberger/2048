@@ -1,13 +1,40 @@
-# 2048
+# 2048 en C#
 
-Règles du jeu :
+![Capture d'écran du jeu](screenshot.png)
 
-• Le but du jeu est de faire glisser des tuiles sur une grille, pour combiner les tuiles de mêmes valeurs et créer ainsi une tuile portant le nombre 2048. Le joueur peut toutefois continuer à jouer après cet objectif atteint pour faire le meilleur score possible.
+## Description
 
-• Le jeu se joue sur une grille de 4x4 cases.
+Ceci est une implémentation simple du jeu de puzzle 2048 en C#. Le jeu offre une approche basée sur la console avec des fonctionnalités classiques de fusion de tuiles pour atteindre la valeur 2048.
 
-• La tuile est la case comprenant un multiple de 2 et jusqu'à "l'infini".
+## Comment jouer
 
-• Le joueur peut choisir de déplacer les tuiles vers la droite/gauche/bas/haut en utilisant les flèches directionnelles.
+1. Utilisez les touches directionnelles (Haut, Bas, Gauche, Droite) pour déplacer les tuiles sur la grille.
+2. Les tuiles se fusionnent lorsqu'elles entrent en collision avec une tuile de même valeur.
+3. À chaque mouvement, une nouvelle tuile (2 ou 4) apparaît aléatoirement sur la grille.
+4. L'objectif est d'atteindre la tuile 2048 en combinant les tuiles.
 
-• Pour augmenter le score, le joueur doit déplacer les tuiles afin de combiner les mêmes nombres.
+## Fonctionnalités
+
+- Interface basée sur la console pour une expérience de jeu simple.
+- Suivi du score et du meilleur score.
+- Gestion de la grille en C# avec des méthodes de fusion et de déplacement.
+
+## Comment démarrer
+
+1. Clonez le dépôt :
+
+   ```bash
+   git clone https://github.com/votre-nom/2048-csharp.git
+   ```
+
+2. Ouvrez le projet dans votre environnement de développement C#.
+
+3. Exécutez le programme pour commencer à jouer.
+
+## Exigences
+
+- .NET Core (version 4.7.2)
+
+## Crédits
+
+- Développé par Röthlisberger.
