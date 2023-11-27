@@ -6,12 +6,18 @@
 
 Ceci est une implémentation simple du jeu de puzzle 2048 en C#. Le jeu offre une approche basée sur la console avec des fonctionnalités classiques de fusion de tuiles pour atteindre la valeur 2048.
 
+## Règles du jeu
+
+1. **Plateau de jeu :** Le jeu se joue sur une grille en 4x4, initialement remplie de deux chiffres.
+2. **Combinaison des tuiles :** En déplaçant les tuiles dans les 4 directions, elles se fusionnent avec les tuiles voisines ayant le même chiffre, doublant ainsi sa valeur.
+3. **Ajout d'une nouvelle tuile : ** À chaque mouvement, une nouvelle tuile '2' ou '4' apparaît de manière aléatoire sur le plateau (90% de chance d'être '2' 10% de chance d'être '4'), occupant une case vide.
+4. **Objectif :** L'objectif est d'obtenir une tuile '2048' en combinant les tuiles. Cependant, le jeu continue après avoir atteint 2048.
+5. **Fin de la partie :** La partie se termine lorsque la grille est pleine et qu'aucun mouvement n'est possible.
+6. **Stratégie : ** Une stratégie connue est de maintenir les tuiles de grandes valeurs dans un coin pour maximiser les combinaisons.
+
 ## Comment jouer
 
-1. Utilisez les touches directionnelles (Haut, Bas, Gauche, Droite) pour déplacer les tuiles sur la grille.
-2. Les tuiles se fusionnent lorsqu'elles entrent en collision avec une tuile de même valeur.
-3. À chaque mouvement, une nouvelle tuile (2 ou 4) apparaît aléatoirement sur la grille.
-4. L'objectif est d'atteindre la tuile 2048 en combinant les tuiles.
+1. Utilisez les flèches directionnelles (haut, bas, gauche, droite) pour déplacer les tuiles sur la grille.
 
 ## Fonctionnalités
 
