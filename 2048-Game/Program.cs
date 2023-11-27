@@ -39,12 +39,12 @@ namespace _2048_Game
                         break;
 
                     case ConsoleKey.UpArrow:
-                        MoveRight(board);
+                        MoveUp(board);
                         AddNewNumber(board);
                         break;
 
                     case ConsoleKey.DownArrow:
-                        MoveRight(board);
+                        MoveDown(board);
                         AddNewNumber(board);
                         break;
 
@@ -138,6 +138,54 @@ namespace _2048_Game
             }
         }
 
+        // Fonction pour déplacer les chiffres vers le haut
+        static void MoveUp(int[,] board)
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                // Déplacer les chiffres vers le haut
+                for (int row = 1; row < 4; row++)
+                {
+                    if (board[row, col] != 0)
+                    {
+                        int currentRow = row;
+
+                        // Déplacer le chiffre vers le haut tant que possible
+                        while (currentRow - 1 >= 0 && board[currentRow - 1, col] == 0)
+                        {
+                            board[currentRow - 1, col] = board[currentRow, col];
+                            board[currentRow, col] = 0;
+                            currentRow--;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Fonction pour déplacer les chiffres vers le bas
+        static void MoveDown(int[,] board)
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                // Déplacer les chiffres vers le bas
+                for (int row = 2; row >= 0; row--)
+                {
+                    if (board[row, col] != 0)
+                    {
+                        int currentRow = row;
+
+                        // Déplacer le chiffre vers le bas tant que possible
+                        while (currentRow + 1 < 4 && board[currentRow + 1, col] == 0)
+                        {
+                            board[currentRow + 1, col] = board[currentRow, col];
+                            board[currentRow, col] = 0;
+                            currentRow++;
+                        }
+                    }
+                }
+            }
+        }
+
         // Fonction pour ajouter un nouveau '2' dans le tableau à chaque mouvement
         static void AddNewNumber(int[,] board)
         {
@@ -165,7 +213,7 @@ namespace _2048_Game
             }
             while (board[row, col] != 0);
 
-            // Ajout du nouveau nombre '2'
+            // Ajout du nouveau chiffre
             board[row, col] = value;
         }
     }
