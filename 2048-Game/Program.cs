@@ -95,19 +95,29 @@ namespace _2048_Game
         {
             for (int row = 0; row < 4; row++)
             {
-                // Déplacer les chiffres vers la droite
                 for (int col = 2; col >= 0; col--)
                 {
                     if (board[row, col] != 0)
                     {
                         int currentCol = col;
 
-                        // Déplacer le chiffre vers la droite tant que possible
-                        while (currentCol + 1 < 4 && board[row, currentCol + 1] == 0)
+                        //Déplacement vers la droite et fusion des nombres
+                        while (currentCol + 1 < 4 && (board[row, currentCol + 1] == 0 || board[row, currentCol + 1] == board[row, currentCol]))
                         {
-                            board[row, currentCol + 1] = board[row, currentCol];
-                            board[row, currentCol] = 0;
-                            currentCol++;
+                            if (board[row, currentCol + 1] == 0)
+                            {
+                                // Déplacement vers la droite
+                                board[row, currentCol + 1] = board[row, currentCol];
+                                board[row, currentCol] = 0;
+                                currentCol++;
+                            }
+                            else if (board[row, currentCol + 1] == board[row, currentCol])
+                            {
+                                // Fusion des nombres de même valeur
+                                board[row, currentCol + 1] *= 2;
+                                board[row, currentCol] = 0;
+                                break;
+                            }
                         }
                     }
                 }
@@ -119,19 +129,29 @@ namespace _2048_Game
         {
             for (int row = 0; row < 4; row++)
             {
-                // Déplacer les chiffres vers la gauche
                 for (int col = 1; col < 4; col++)
                 {
                     if (board[row, col] != 0)
                     {
                         int currentCol = col;
 
-                        // Déplacer le chiffre vers la gauche tant que possible
-                        while (currentCol - 1 >= 0 && board[row, currentCol - 1] == 0)
+                        //Déplacement vers la gauche et fusion des nombres
+                        while (currentCol - 1 >= 0 && (board[row, currentCol - 1] == 0 || board[row, currentCol - 1] == board[row, currentCol]))
                         {
-                            board[row, currentCol - 1] = board[row, currentCol];
-                            board[row, currentCol] = 0;
-                            currentCol--;
+                            // Déplacement vers la gauche
+                            if (board[row, currentCol - 1] == 0)
+                            {
+                                board[row, currentCol - 1] = board[row, currentCol];
+                                board[row, currentCol] = 0;
+                                currentCol--;
+                            }
+                            else if (board[row, currentCol - 1] == board[row, currentCol])
+                            {
+                                // Fusion des nombres de même valeur
+                                board[row, currentCol - 1] *= 2;
+                                board[row, currentCol] = 0;
+                                break;
+                            }
                         }
                     }
                 }
@@ -143,19 +163,29 @@ namespace _2048_Game
         {
             for (int col = 0; col < 4; col++)
             {
-                // Déplacer les chiffres vers le haut
                 for (int row = 1; row < 4; row++)
                 {
                     if (board[row, col] != 0)
                     {
                         int currentRow = row;
 
-                        // Déplacer le chiffre vers le haut tant que possible
-                        while (currentRow - 1 >= 0 && board[currentRow - 1, col] == 0)
+                        //Déplacement vers le haut et fusion des nombres
+                        while (currentRow - 1 >= 0 && (board[currentRow - 1, col] == 0 || board[currentRow - 1, col] == board[currentRow, col]))
                         {
-                            board[currentRow - 1, col] = board[currentRow, col];
-                            board[currentRow, col] = 0;
-                            currentRow--;
+                            // Déplacement vers le haut
+                            if (board[currentRow - 1, col] == 0)
+                            {
+                                board[currentRow - 1, col] = board[currentRow, col];
+                                board[currentRow, col] = 0;
+                                currentRow--;
+                            }
+                            else if (board[currentRow - 1, col] == board[currentRow, col])
+                            {
+                                // Fusion des nombres de même valeur
+                                board[currentRow - 1, col] *= 2;
+                                board[currentRow, col] = 0;
+                                break;
+                            }
                         }
                     }
                 }
@@ -167,19 +197,29 @@ namespace _2048_Game
         {
             for (int col = 0; col < 4; col++)
             {
-                // Déplacer les chiffres vers le bas
                 for (int row = 2; row >= 0; row--)
                 {
                     if (board[row, col] != 0)
                     {
                         int currentRow = row;
 
-                        // Déplacer le chiffre vers le bas tant que possible
-                        while (currentRow + 1 < 4 && board[currentRow + 1, col] == 0)
+                        //Déplacement vers le bas et fusion des nombres
+                        while (currentRow + 1 < 4 && (board[currentRow + 1, col] == 0 || board[currentRow + 1, col] == board[currentRow, col]))
                         {
-                            board[currentRow + 1, col] = board[currentRow, col];
-                            board[currentRow, col] = 0;
-                            currentRow++;
+                            // Déplacement vers le bas
+                            if (board[currentRow + 1, col] == 0)
+                            {
+                                board[currentRow + 1, col] = board[currentRow, col];
+                                board[currentRow, col] = 0;
+                                currentRow++;
+                            }
+                            else if (board[currentRow + 1, col] == board[currentRow, col])
+                            {
+                                // Fusion des nombres de même valeur
+                                board[currentRow + 1, col] *= 2;
+                                board[currentRow, col] = 0;
+                                break;
+                            }
                         }
                     }
                 }
