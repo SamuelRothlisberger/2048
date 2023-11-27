@@ -24,7 +24,7 @@ Ceci est une implémentation simple du jeu de puzzle 2048 en C#. Le jeu offre un
 1. Clonez le dépôt :
 
    ```bash
-   git clone https://github.com/votre-nom/2048-csharp.git
+   git clone https://github.com/SamuelRothlisberger/2048.git
    ```
 
 2. Ouvrez le projet dans votre environnement de développement C#.
