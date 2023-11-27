@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/********************************************
+ Auteur : Samuel Röthlisberger
+ Date : 13.11.2023
+ Description : Créer le jeu 2048
+*********************************************/
+
 namespace _2048_Game
 {
     internal class Program
