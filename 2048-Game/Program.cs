@@ -143,7 +143,19 @@ namespace _2048_Game
         {
             Random random = new Random();
 
-            // Recherche d'une position vide pour ajouter un nouveau '2'
+            // Obtient la valeur du nouveau chiffre avec 90% de chance d'avoir un '2' et 10% de chance d'avoir un '4'
+            int value;
+
+            if (random.Next(10) < 9)
+            {
+                value = 2;  // 90% de chance d'avoir un '2'
+            }
+            else
+            {
+                value = 4;  // 10% de chance d'avoir un '4'
+            }
+
+            // Recherche d'une position vide pour ajouter un nouveau chiffre
             int row, col;
 
             do
@@ -154,7 +166,7 @@ namespace _2048_Game
             while (board[row, col] != 0);
 
             // Ajout du nouveau nombre '2'
-            board[row, col] = 2;
+            board[row, col] = value;
         }
     }
 }
