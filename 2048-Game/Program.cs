@@ -14,6 +14,8 @@ namespace _2048_Game
 {
     internal class Program
     {
+        static int score = 0;
+
         static void Main(string[] args)
         {
             // Créer un tableau à 2 dimensions
@@ -94,6 +96,8 @@ namespace _2048_Game
                 }
                 Console.WriteLine("\n\n");
             }
+
+            Console.WriteLine("\nScore : " + score);
         }
 
         // Fonction pour déplacer les chiffres vers la droite
@@ -122,6 +126,9 @@ namespace _2048_Game
                                 // Fusion des nombres de même valeur
                                 board[row, currentCol + 1] *= 2;
                                 board[row, currentCol] = 0;
+
+                                // Ajouter la valeur fusionnée au score
+                                score += board[row, currentCol + 1];
                                 break;
                             }
                         }
@@ -156,6 +163,9 @@ namespace _2048_Game
                                 // Fusion des nombres de même valeur
                                 board[row, currentCol - 1] *= 2;
                                 board[row, currentCol] = 0;
+
+                                // Ajouter la valeur fusionnée au score
+                                score += board[row, currentCol - 1];
                                 break;
                             }
                         }
@@ -190,6 +200,9 @@ namespace _2048_Game
                                 // Fusion des nombres de même valeur
                                 board[currentRow - 1, col] *= 2;
                                 board[currentRow, col] = 0;
+
+                                // Ajouter la valeur fusionnée au score
+                                score += board[currentRow - 1, col];
                                 break;
                             }
                         }
@@ -224,6 +237,9 @@ namespace _2048_Game
                                 // Fusion des nombres de même valeur
                                 board[currentRow + 1, col] *= 2;
                                 board[currentRow, col] = 0;
+
+                                // Ajouter la valeur fusionnée au score
+                                score += board[currentRow + 1, col];
                                 break;
                             }
                         }
