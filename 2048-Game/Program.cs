@@ -92,12 +92,45 @@ namespace _2048_Game
             {
                 for (int col = 0; col < 4; col++)
                 {
-                    Console.Write(board[row, col] + "\t");
+                    // Récuperer la valeur de la case
+                    int value = board[row, col];
+
+                    // Choisir une couleur en fonction de la valeur
+                    ConsoleColor color = GetColor(value);
+
+                    //Changer la couleur de la case
+                    Console.ForegroundColor = color;
+
+                    // Afficher la valeur de la case
+                    Console.Write(value + "\t");
+
+                    //Rétablir la couleur par défaut
+                    Console.ResetColor();
                 }
                 Console.WriteLine("\n\n");
             }
 
             Console.WriteLine("\nScore : " + score);
+        }
+
+        // Fonction pour avoir la couleur en fonction de la valeur de la case
+        static ConsoleColor GetColor(int value)
+        {
+            switch (value)
+            {
+                case 2: return ConsoleColor.White;
+                case 4: return ConsoleColor.Gray;
+                case 8: return ConsoleColor.DarkGray;
+                case 16: return ConsoleColor.Yellow;
+                case 32: return ConsoleColor.DarkYellow;
+                case 64: return ConsoleColor.Red;
+                case 128: return ConsoleColor.DarkRed;
+                case 256: return ConsoleColor.Magenta;
+                case 512: return ConsoleColor.DarkMagenta;
+                case 1024: return ConsoleColor.DarkBlue;
+                case 2048: return ConsoleColor.Blue;
+                default: return ConsoleColor.White;
+            }
         }
 
         // Fonction pour déplacer les chiffres vers la droite
