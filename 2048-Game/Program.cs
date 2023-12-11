@@ -88,9 +88,9 @@ namespace _2048_Game
         {
             Console.Clear();
 
-            Console.Write("---------------------------");
-            Console.Write("\n-------- 2048 Game --------");
-            Console.Write("\n---------------------------\n\n\n");
+            Console.Write("-------------------------------");
+            Console.Write("\n---------- 2048 Game ----------");
+            Console.Write("\n-------------------------------\n\n\n");
 
             for (int row = 0; row < 4; row++)
             {
@@ -102,8 +102,10 @@ namespace _2048_Game
                     // Choisir une couleur en fonction de la valeur
                     ConsoleColor color = GetColor(value);
 
+                    Console.ForegroundColor = ConsoleColor.Black;
+
                     //Changer la couleur de la case
-                    Console.ForegroundColor = color;
+                    Console.BackgroundColor = color;
 
                     // Afficher la valeur de la case
                     Console.Write(value + "\t");
@@ -122,6 +124,7 @@ namespace _2048_Game
         {
             switch (value)
             {
+                case 0: return ConsoleColor.White;
                 case 2: return ConsoleColor.White;
                 case 4: return ConsoleColor.Gray;
                 case 8: return ConsoleColor.DarkGray;
@@ -133,7 +136,7 @@ namespace _2048_Game
                 case 512: return ConsoleColor.DarkMagenta;
                 case 1024: return ConsoleColor.DarkBlue;
                 case 2048: return ConsoleColor.Blue;
-                default: return ConsoleColor.White;
+                default: return ConsoleColor.Blue;
             }
         }
 
