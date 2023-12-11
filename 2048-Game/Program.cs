@@ -88,6 +88,10 @@ namespace _2048_Game
         {
             Console.Clear();
 
+            Console.Write("---------------------------");
+            Console.Write("\n-------- 2048 Game --------");
+            Console.Write("\n---------------------------\n\n\n");
+
             for (int row = 0; row < 4; row++)
             {
                 for (int col = 0; col < 4; col++)
