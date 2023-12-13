@@ -396,6 +396,13 @@ namespace _2048_Game
                     }
                 }
             }
+
+            //Si la fonction Lose retourne vrai alors le joueur a perdu
+            if (Lose(board) == true)
+            {
+                return false; // Si le joueur a perdu retourne faux
+            }
+
             return false; // Si aucune case 2048 ou plus est présente retourne faux
         }
     }
