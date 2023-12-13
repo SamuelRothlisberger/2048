@@ -40,24 +40,28 @@ namespace _2048_Game
                         MoveRight(board);
                         AddNewNumber(board);
                         Lose(board);
+                        Win(board);
                         break;
 
                     case ConsoleKey.LeftArrow:
                         MoveLeft(board);
                         AddNewNumber(board);
                         Lose(board);
+                        Win(board);
                         break;
 
                     case ConsoleKey.UpArrow:
                         MoveUp(board);
                         AddNewNumber(board);
                         Lose(board);
+                        Win(board);
                         break;
 
                     case ConsoleKey.DownArrow:
                         MoveDown(board);
                         AddNewNumber(board);
                         Lose(board);
+                        Win(board);
                         break;
 
                     default:
@@ -121,11 +125,19 @@ namespace _2048_Game
             }
             Console.WriteLine("\nScore : " + score);
 
+            if (Win(board) == true)
+            {
+                Console.WriteLine("\n\nBravo, tu as gagné ! Tu peux continuer à jouer");
+                Console.ReadKey();
+            }
+
             if (Lose(board) == true)
             {
                 Console.WriteLine("\n\nTu as perdu !");
                 Console.ReadKey();
             }
+
+
         }
 
         // Fonction pour avoir la couleur en fonction de la valeur de la case
@@ -304,7 +316,7 @@ namespace _2048_Game
 
             // Obtient la valeur du nouveau chiffre avec 90% de chance d'avoir un '2' et 10% de chance d'avoir un '4'
             int value;
-
+  
             if (random.Next(10) < 9)
             {
                 value = 2;  // 90% de chance d'avoir un '2'
@@ -368,6 +380,23 @@ namespace _2048_Game
             }
             // Si aucun mouvement possible, le joueur a perdu
             return true;
+        }
+
+        // Fonction qui vérifie si le joueur a gagné
+        static bool Win(int[,] board)
+        {
+            // Cherche dans le tableau si une case 2048 ou plus est présente
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    if (board[row, col] >= 2048)
+                    {
+                        return true; // Si une case 2048 ou plus est présente retourne vrai
+                    }
+                }
+            }
+            return false; // Si aucune case 2048 ou plus est présente retourne faux
         }
     }
 }
