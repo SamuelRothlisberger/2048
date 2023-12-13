@@ -39,21 +39,25 @@ namespace _2048_Game
                     case ConsoleKey.RightArrow:
                         MoveRight(board);
                         AddNewNumber(board);
+                        Lose(board);
                         break;
 
                     case ConsoleKey.LeftArrow:
                         MoveLeft(board);
                         AddNewNumber(board);
+                        Lose(board);
                         break;
 
                     case ConsoleKey.UpArrow:
                         MoveUp(board);
                         AddNewNumber(board);
+                        Lose(board);
                         break;
 
                     case ConsoleKey.DownArrow:
                         MoveDown(board);
                         AddNewNumber(board);
+                        Lose(board);
                         break;
 
                     default:
@@ -115,8 +119,13 @@ namespace _2048_Game
                 }
                 Console.WriteLine("\n\n");
             }
-
             Console.WriteLine("\nScore : " + score);
+
+            if (Lose(board) == true)
+            {
+                Console.WriteLine("\n\nTu as perdu !");
+                Console.ReadKey();
+            }
         }
 
         // Fonction pour avoir la couleur en fonction de la valeur de la case
@@ -317,6 +326,48 @@ namespace _2048_Game
 
             // Ajout du nouveau chiffre
             board[row, col] = value;
+        }
+
+        //Fonction qui vérifie si le joueur a perdu ou non
+        static bool Lose(int[,] board)
+        {
+            //Vérifie si une case est vide
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    if (board[row, col] == 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            // Vérifie si des mouvements sont encore possible horizontalement
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    if (board[row, col] == board[row, col + 1] || board[row, col] == 0 || board[row, col + 1] == 0)
+                    {
+                        return false;
+                    } 
+                }
+            }
+            
+            // Vérifie si des mouvements sont encore possible verticalement
+            for (int col = 0; col < 4; col++)
+            {
+                for (int row = 0; row < 3; row++)
+                {
+                    if (board[row, col] == board[row + 1, col] || board[row, col] == 0 || board[row + 1, col] == 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            // Si aucun mouvement possible, le joueur a perdu
+            return true;
         }
     }
 }
