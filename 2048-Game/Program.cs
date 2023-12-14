@@ -128,7 +128,6 @@ namespace _2048_Game
             if (Win(board) == true)
             {
                 Console.WriteLine("\n\nBravo, tu as gagné ! Tu peux continuer à jouer");
-                Console.ReadKey();
             }
 
             if (Lose(board) == true)
@@ -385,6 +384,12 @@ namespace _2048_Game
         // Fonction qui vérifie si le joueur a gagné
         static bool Win(int[,] board)
         {
+            //Si la fonction Lose retourne vrai alors le joueur a perdu
+            if (Lose(board) == true)
+            {
+                return false; // Si le joueur a perdu retourne faux
+            }
+
             // Cherche dans le tableau si une case 2048 ou plus est présente
             for (int row = 0; row < 4; row++)
             {
@@ -396,13 +401,6 @@ namespace _2048_Game
                     }
                 }
             }
-
-            //Si la fonction Lose retourne vrai alors le joueur a perdu
-            if (Lose(board) == true)
-            {
-                return false; // Si le joueur a perdu retourne faux
-            }
-
             return false; // Si aucune case 2048 ou plus est présente retourne faux
         }
     }
