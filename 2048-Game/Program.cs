@@ -21,8 +21,11 @@ namespace _2048_Game
             // Créer un tableau à 2 dimensions
             int[,] board = new int[4, 4];
 
-            // Initialiser le tableau avec deux chiffres '2' placés aléatoirement
-            InitializeBoard(board);
+            //Initialise le tableau avec 2 chiffres aléatoires
+            for (int start = 0; start < 2; start++)
+            {
+                AddNewNumber(board);
+            }
 
             // Boucle principale du jeu
             while (true)
@@ -38,56 +41,27 @@ namespace _2048_Game
                 {
                     case ConsoleKey.RightArrow:
                         MoveRight(board);
-                        AddNewNumber(board);
-                        Lose(board);
-                        Win(board);
                         break;
 
                     case ConsoleKey.LeftArrow:
                         MoveLeft(board);
-                        AddNewNumber(board);
-                        Lose(board);
-                        Win(board);
                         break;
 
                     case ConsoleKey.UpArrow:
                         MoveUp(board);
-                        AddNewNumber(board);
-                        Lose(board);
-                        Win(board);
                         break;
 
                     case ConsoleKey.DownArrow:
                         MoveDown(board);
-                        AddNewNumber(board);
-                        Lose(board);
-                        Win(board);
                         break;
 
                     default:
                         Console.WriteLine("Tu dois appuyer sur les flèches directionnelles");
                         break;
                 }
-            }
-        }
-
-        // Fonction pour initialiser le tableau avec deux chiffres '2'
-        static void InitializeBoard(int[,] board)
-        {
-            Random randomStart = new Random();
-
-            for (int i = 0; i < 2; i++)
-            {
-                int row = randomStart.Next(0, 4);
-                int col = randomStart.Next(0, 4);
-
-                while (board[row, col] != 0)
-                {
-                    row = randomStart.Next(0, 4);
-                    col = randomStart.Next(0, 4);
-                }
-
-                board[row, col] = 2;
+                AddNewNumber(board);
+                Lose(board);
+                Win(board);
             }
         }
 
