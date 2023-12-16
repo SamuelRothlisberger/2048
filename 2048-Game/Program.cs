@@ -37,6 +37,9 @@ namespace _2048_Game
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
                 ConsoleKey key = keyInfo.Key;
 
+                // Sauvegarde le tableau actuel dans une variable
+                int[,] previousBoard = (int[,])board.Clone();
+
                 switch (key)
                 {
                     case ConsoleKey.RightArrow:
@@ -59,11 +62,32 @@ namespace _2048_Game
                         Console.WriteLine("Tu dois appuyer sur les flèches directionnelles");
                         break;
                 }
-                AddNewNumber(board);
+                // Verifie si le tableau a changé
+                if (!BoardEqual(previousBoard, board))
+                {
+                    AddNewNumber(board); // Ajoute un nombre si le tableau a changé
+                }
                 Lose(board);
                 Win(board);
             }
         }
+
+        // Fonction qui verifie si 2 tableaux sont les mêmes
+        static bool BoardEqual(int[,] board1, int[,] board2)
+        {
+            for (int row = 0; row < board1.GetLength(0); row++)
+            {
+                for (int col = 0; col < board1.GetLength(1); col++)
+                {
+                    if (board1[row, col] != board2[row, col])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
 
         // Fonction pour afficher la grille 4x4
         static void DisplayBoard(int[,] board)
@@ -109,8 +133,6 @@ namespace _2048_Game
                 Console.WriteLine("\n\nTu as perdu !");
                 Console.ReadKey();
             }
-
-
         }
 
         // Fonction pour avoir la couleur en fonction de la valeur de la case
@@ -289,7 +311,7 @@ namespace _2048_Game
 
             // Obtient la valeur du nouveau chiffre avec 90% de chance d'avoir un '2' et 10% de chance d'avoir un '4'
             int value;
-  
+
             if (random.Next(10) < 9)
             {
                 value = 2;  // 90% de chance d'avoir un '2'
@@ -336,10 +358,10 @@ namespace _2048_Game
                     if (board[row, col] == board[row, col + 1] || board[row, col] == 0 || board[row, col + 1] == 0)
                     {
                         return false;
-                    } 
+                    }
                 }
             }
-            
+
             // Vérifie si des mouvements sont encore possible verticalement
             for (int col = 0; col < 4; col++)
             {
