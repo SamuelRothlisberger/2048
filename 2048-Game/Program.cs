@@ -15,6 +15,7 @@ namespace _2048_Game
     internal class Program
     {
         static int score = 0;
+        static Random random = new Random();
 
         static void Main(string[] args)
         {
@@ -108,10 +109,8 @@ namespace _2048_Game
                     // Choisir une couleur en fonction de la valeur
                     ConsoleColor color = GetColor(value);
 
-                    Console.ForegroundColor = ConsoleColor.Black;
-
                     //Changer la couleur de la case
-                    Console.BackgroundColor = color;
+                    Console.ForegroundColor = color;
 
                     // Afficher la valeur de la case
                     Console.Write(value + "\t");
@@ -307,8 +306,6 @@ namespace _2048_Game
         // Fonction pour ajouter un nouveau '2' dans le tableau à chaque mouvement
         static void AddNewNumber(int[,] board)
         {
-            Random random = new Random();
-
             // Obtient la valeur du nouveau chiffre avec 90% de chance d'avoir un '2' et 10% de chance d'avoir un '4'
             int value;
 
