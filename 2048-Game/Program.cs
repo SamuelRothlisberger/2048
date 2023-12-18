@@ -19,6 +19,9 @@ namespace _2048_Game
 
         static void Main(string[] args)
         {
+            // Titre de la fenêtre
+            Console.Title = "2048 Game";
+
             // Créer un tableau à 2 dimensions
             int[,] board = new int[4, 4];
 
