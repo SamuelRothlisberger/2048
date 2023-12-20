@@ -130,8 +130,15 @@ namespace _2048_Game
 
             if (Lose() == true)
             {
-                Console.WriteLine("\n\nTu as perdu !");
-                Console.ReadKey();
+                Console.WriteLine("\n\nTu as perdu !\n\nAppuie sur 'Echap' pour quitter");
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                ConsoleKey key = keyInfo.Key;
+
+                if (key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(0);
+                }
             }
         }
 
