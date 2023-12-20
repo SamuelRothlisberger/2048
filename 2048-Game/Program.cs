@@ -16,26 +16,24 @@ namespace _2048_Game
     {
         static int score = 0;
         static Random random = new Random();
+        static int[,] board = new int[4, 4];
 
         static void Main(string[] args)
         {
             // Titre de la fenêtre
             Console.Title = "2048 Game";
 
-            // Créer un tableau à 2 dimensions
-            int[,] board = new int[4, 4];
-
             //Initialise le tableau avec 2 chiffres aléatoires
             for (int start = 0; start < 2; start++)
             {
-                AddNewNumber(board);
+                AddNewNumber();
             }
 
             // Boucle principale du jeu
             while (true)
             {
                 // Afficher la grille 4x4
-                DisplayBoard(board);
+                DisplayBoard();
 
                 // Obtenir la touche pressée
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
@@ -47,19 +45,19 @@ namespace _2048_Game
                 switch (key)
                 {
                     case ConsoleKey.RightArrow:
-                        MoveRight(board);
+                        MoveRight();
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        MoveLeft(board);
+                        MoveLeft();
                         break;
 
                     case ConsoleKey.UpArrow:
-                        MoveUp(board);
+                        MoveUp();
                         break;
 
                     case ConsoleKey.DownArrow:
-                        MoveDown(board);
+                        MoveDown();
                         break;
 
                     default:
@@ -69,10 +67,10 @@ namespace _2048_Game
                 // Verifie si le tableau a changé
                 if (!BoardEqual(previousBoard, board))
                 {
-                    AddNewNumber(board); // Ajoute un nombre si le tableau a changé
+                    AddNewNumber(); // Ajoute un nombre si le tableau a changé
                 }
-                Lose(board);
-                Win(board);
+                Lose();
+                Win();
             }
         }
 
@@ -94,7 +92,7 @@ namespace _2048_Game
 
 
         // Fonction pour afficher la grille 4x4
-        static void DisplayBoard(int[,] board)
+        static void DisplayBoard()
         {
             Console.Clear();
 
@@ -125,12 +123,12 @@ namespace _2048_Game
             }
             Console.WriteLine("\nScore : " + score);
 
-            if (Win(board) == true)
+            if (Win() == true)
             {
                 Console.WriteLine("\n\nBravo, tu as gagné ! Tu peux continuer à jouer");
             }
 
-            if (Lose(board) == true)
+            if (Lose() == true)
             {
                 Console.WriteLine("\n\nTu as perdu !");
                 Console.ReadKey();
@@ -159,7 +157,7 @@ namespace _2048_Game
         }
 
         // Fonction pour déplacer les chiffres vers la droite
-        static void MoveRight(int[,] board)
+        static void MoveRight()
         {
             for (int row = 0; row < 4; row++)
             {
@@ -196,7 +194,7 @@ namespace _2048_Game
         }
 
         // Fonction pour déplacer les chiffres vers la gauche
-        static void MoveLeft(int[,] board)
+        static void MoveLeft()
         {
             for (int row = 0; row < 4; row++)
             {
@@ -233,7 +231,7 @@ namespace _2048_Game
         }
 
         // Fonction pour déplacer les chiffres vers le haut
-        static void MoveUp(int[,] board)
+        static void MoveUp()
         {
             for (int col = 0; col < 4; col++)
             {
@@ -270,7 +268,7 @@ namespace _2048_Game
         }
 
         // Fonction pour déplacer les chiffres vers le bas
-        static void MoveDown(int[,] board)
+        static void MoveDown()
         {
             for (int col = 0; col < 4; col++)
             {
@@ -307,7 +305,7 @@ namespace _2048_Game
         }
 
         // Fonction pour ajouter un nouveau '2' dans le tableau à chaque mouvement
-        static void AddNewNumber(int[,] board)
+        static void AddNewNumber()
         {
             // Obtient la valeur du nouveau chiffre avec 90% de chance d'avoir un '2' et 10% de chance d'avoir un '4'
             int value;
@@ -336,17 +334,14 @@ namespace _2048_Game
         }
 
         //Fonction qui vérifie si le joueur a perdu ou non
-        static bool Lose(int[,] board)
+        static bool Lose()
         {
             //Vérifie si une case est vide
-            for (int row = 0; row < 4; row++)
+            foreach (var number in board)
             {
-                for (int col = 0; col < 4; col++)
+                if (number == 0)
                 {
-                    if (board[row, col] == 0)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
@@ -378,18 +373,18 @@ namespace _2048_Game
         }
 
         // Fonction qui vérifie si le joueur a gagné
-        static bool Win(int[,] board)
+        static bool Win()
         {
             //Si la fonction Lose retourne vrai alors le joueur a perdu
-            if (Lose(board) == true)
+            if (Lose() == true)
             {
                 return false; // Si le joueur a perdu retourne faux
             }
 
             // Cherche dans le tableau si une case 2048 ou plus est présente
-            foreach (var row in board)
+            foreach (var number in board)
             {
-                if (row >= 2048)
+                if (number >= 2048)
                 {
                     return true; // Si une case 2048 ou plus est présente retourne vrai
                 }
