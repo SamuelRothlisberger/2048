@@ -387,14 +387,11 @@ namespace _2048_Game
             }
 
             // Cherche dans le tableau si une case 2048 ou plus est présente
-            for (int row = 0; row < 4; row++)
+            foreach (var row in board)
             {
-                for (int col = 0; col < 4; col++)
+                if (row >= 2048)
                 {
-                    if (board[row, col] >= 2048)
-                    {
-                        return true; // Si une case 2048 ou plus est présente retourne vrai
-                    }
+                    return true; // Si une case 2048 ou plus est présente retourne vrai
                 }
             }
             return false; // Si aucune case 2048 ou plus est présente retourne faux
