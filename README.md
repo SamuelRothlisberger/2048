@@ -1,6 +1,6 @@
 # 2048 en C#
 
-![Capture d'écran du jeu](screenshot.png)
+[Capture d'écran du jeu](https://imgur.com/aWnHH2q)
 
 ## Description
 
